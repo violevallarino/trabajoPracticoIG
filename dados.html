@@ -7,4 +7,120 @@
   <link rel="stylesheet" href="css/archivo.css">
 </head>
 
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="cartas.html">Juego de cartas</a>
+            <a href="dados.html">Juego de dados</a>
+            <a href="preguntas.html">Juego de preguntas</a>
+            <a href="puntajes.html">Puntajes</a>
+            <a href="integrantes.html">Integrantes</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="introduccion">
+            <h1>El Primero a 100</h1>
+
+            <p>
+                El objetivo del juego es llegar a 100 puntos antes que el otro jugador.
+                En cada turno podés tirar los dados para acumular puntos o plantarte
+                para guardar los puntos obtenidos durante la ronda.
+            </p>
+        </section>
+
+        <section class="reglas">
+            <h2>¿Cómo jugar?</h2>
+
+            <p>
+                En cada turno se tiran dos dados. Los puntos obtenidos se acumulan
+                durante ese turno.
+            </p>
+
+            <p>
+                Podés elegir entre seguir tirando para sumar más puntos o plantarte
+                y guardar los puntos acumulados.
+            </p>
+
+            <p>
+                Si aparece un 1 en cualquiera de los dos dados, perdés todos los puntos
+                acumulados durante ese turno y pasa el turno al otro jugador.
+            </p>
+
+            <p>
+                El primer jugador que llegue a 100 puntos gana la partida.
+            </p>
+        </section>
+
+        <section class="juego">
+
+            <div class="estado-juego">
+                <h2>Turno de:</h2>
+                <p id="jugador-actual">Jugador 1</p>
+            </div>
+
+            <div class="jugadores">
+
+                <article class="jugador jugador-activo" id="jugador-1">
+                    <h2>Jugador 1</h2>
+
+                    <p>Puntaje total</p>
+                    <p id="puntaje-1">0</p>
+                </article>
+
+                <article class="jugador" id="jugador-2">
+                    <h2>Jugador 2</h2>
+
+                    <p>Puntaje total</p>
+                    <p id="puntaje-2">0</p>
+                </article>
+
+            </div>
+
+            <div class="dados">
+
+                <div class="dado">
+                    <img id="dado-1" src="img/dado-1.png" alt="Dado 1">
+                </div>
+
+                <div class="dado">
+                    <img id="dado-2" src="img/dado-1.png" alt="Dado 2">
+                </div>
+
+            </div>
+
+            <div class="resultado">
+
+                <p>Puntos de esta ronda:</p>
+                <p id="puntos-ronda">0</p>
+
+            </div>
+
+            <div class="acciones">
+
+                <button id="boton-lanzar">Lanzar dados</button>
+
+                <button id="boton-plantarse">Plantarse</button>
+
+                <button id="boton-nueva-partida">Nueva partida</button>
+
+            </div>
+
+            <p id="mensaje-juego"></p>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>El Primero a 100</p>
+    </footer>
+
+    <script src="js/dados.js"></script>
+
+</body>
+
 </html>
