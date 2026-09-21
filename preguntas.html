@@ -1,10 +1,91 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TP Informatica General- Juego de preguntas</title>
-  <link rel="stylesheet" href="css/archivo.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP Informatica General - Juego de preguntas</title>
+<link rel="stylesheet" href="css/archivo.css">
 </head>
+<body>
 
+  <header>
+    <h1>Juego de Preguntas</h1>
+  </header>
+
+  <main>
+
+    <!-- ============ PANTALLA 1: Instrucciones ============ -->
+    <section id="seccionInstrucciones" class="pantallaActiva">
+      <h2>¿Cómo se juega?</h2>
+      <p>Participan 3 jugadores por turnos. Cada uno responde 10 preguntas de opción múltiple.</p>
+      <ul>
+        <li>Jugador 1 juega primero sus 10 preguntas.</li>
+        <li>Cada jugador tiene un tiempo límite total para completar su turno.</li>
+        <li>Al terminar cada jugador, se avanza manualmente al siguiente.</li>
+        <li>Al finalizar los 3 turnos se muestra el podio de esta partida.</li>
+      </ul>
+      <button id="botonEmpezarJuego" class="botonPrincipal" type="button">Empezar juego</button>
+    </section>
+
+    <!-- PANTALLA 2: Juego (turno activo) -->
+    <section id="seccionJuego" class="pantallaOculta">
+
+      <div class="encabezadoTurno">
+        <h2 id="nombreJugadorActual">Jugador 1</h2>
+        <p id="contadorPregunta">Pregunta 1/10</p>
+        <p id="temporizador">Tiempo: 60s</p>
+      </div>
+
+      <article class="tarjetaPregunta">
+        <h3 id="textoPregunta">Texto de la pregunta</h3>
+        <ul id="listaOpciones" class="listaOpciones">
+          <!-- Las 3 opciones (li > button) se generan dinámicamente desde JS -->
+        </ul>
+      </article>
+
+    </section>
+
+    <!-- PANTALLA 3: Transición entre jugadores -->
+    <section id="seccionTransicion" class="pantallaOculta">
+      <h2 id="mensajeTransicion">Turno de Jugador 2</h2>
+      <p id="resumenTurnoAnterior">Jugador 1 respondió correctamente 0/10 preguntas.</p>
+      <button id="botonSiguienteJugador" class="botonPrincipal" type="button">Continuar</button>
+    </section>
+
+    <!-- PANTALLA 4: Resultados de esta partida -->
+    <section id="seccionResultados" class="pantallaOculta">
+      <h2>Resultados de la partida</h2>
+
+      <table id="tablaResumenJugadores">
+        <caption>Detalle por jugador</caption>
+        <thead>
+          <tr>
+            <th scope="col">Jugador</th>
+            <th scope="col">Respondidas</th>
+            <th scope="col">Correctas</th>
+          </tr>
+        </thead>
+        <tbody id="cuerpoTablaResumen">
+          <!-- Filas generadas dinámicamente desde JS -->
+        </tbody>
+      </table>
+
+      <div id="podio" class="podio">
+        <!-- 3 puestos generados dinámicamente desde JS -->
+      </div>
+
+      <nav class="navegacionFinal">
+        <a id="enlaceResultadosGenerales" href="resultados.html">Ver tabla de resultados generales</a>
+      </nav>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>TP Informática General</p>
+  </footer>
+
+  <script src="js/datosPreguntas.js"></script>
+  <script src="js/preguntas.js"></script>
+</body>
 </html>

@@ -1,0 +1,11 @@
+
+
+
+/*  Control de pantallas: clave para la navegación por JS */
+.pantallaOculta {
+  display: none;
+}
+ 
+.pantallaActiva {
+  display: block;
+}
