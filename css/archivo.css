@@ -9,7 +9,263 @@
 }
 
 /* Layout general (todas las paginas) */
+/* ============================================
+   TP INFORMÁTICA GENERAL - Estilos generales
+   ============================================ */
 
+/* --- Tipografías (Google Fonts) --- */
+/* ============================================
+   TP INFORMÁTICA GENERAL - Estilos generales
+   ============================================ */
+
+/* --- Tipografías (Google Fonts) --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Josefin+Sans:wght@300;400;600;700&display=swap');
+/* ============================================
+   TP INFORMÁTICA GENERAL - Estilos generales
+   ============================================ */
+
+
+/* --- Variables de la paleta --- */
+:root {
+  --violeta: #7200BF;
+  --verde: #A5BE00;
+  --fondo: #FBFFE0;
+  --gris-texto: #2B2B2B;
+  --negro-titulos: #000000;
+
+  --ancho-nav: 220px;
+  --ancho-maximo: 1400px;
+  --ancho-texto: 65ch;
+  --radio: 22px;
+  --radio-link: 14px;
+  --transicion: 0.3s ease;
+}
+
+/* --- Reset básico --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--fondo);
+  color: var(--gris-texto);
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 300;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  color: var(--negro-titulos);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.6em;
+  max-width: var(--ancho-texto);
+}
+
+h1 { font-size: 3.4rem; }
+h2 { font-size: 2.3rem; }
+h3 { font-size: 1.6rem; }
+
+p, li {
+  margin-bottom: 1em;
+  max-width: var(--ancho-texto);
+}
+
+a {
+  text-decoration: none;
+  font-family: inherit;
+}
+
+button {
+  font-family: "Montserrat", sans-serif;
+  cursor: pointer;
+}
+
+/* ============================================
+   NAV LATERAL (columna fija, redondeada como un todo)
+   ============================================ */
+
+header {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  height: calc(100vh - 2rem);
+  width: var(--ancho-nav);
+  background-color: var(--verde);
+  border-radius: var(--radio);
+  box-shadow: 0 10px 30px rgba(114, 0, 191, 0.25);
+  padding: 2rem 1.25rem;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+header nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+header nav a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.15em;
+  padding: 0.9em 0.6em;
+  background-color: var(--fondo);
+  border: 2.5px solid var(--violeta);
+  border-radius: var(--radio-link);
+  color: var(--violeta);
+  transition: background-color var(--transicion), color var(--transicion);
+}
+
+.nav-linea1 {
+  font-family: "Josefin Sans", sans-serif;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  opacity: 0.75;
+  color: inherit;
+}
+
+.nav-linea2 {
+  font-family: "Josefin Sans", sans-serif;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: inherit;
+}
+
+header nav a:hover {
+  background-color: rgba(114, 0, 191, 0.1);
+}
+
+/* Página actual: se invierte, fondo violeta */
+header nav a.activo {
+  background-color: var(--violeta);
+  color: var(--fondo);
+}
+
+header nav a.activo:hover {
+  background-color: var(--violeta);
+}
+
+/* Juego ya jugado / resultado guardado: fondo violeta, letras verdes
+   (pisa el estilo de .activo si la página actual ya fue completada) */
+header nav a.completado {
+  background-color: var(--violeta);
+  color: var(--verde);
+}
+
+header nav a.completado:hover {
+  background-color: var(--violeta);
+}
+
+/* --- Botón hamburguesa (oculto en escritorio) --- */
+#menu-toggle {
+  display: none;
+}
+
+.hamburguesa {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 200;
+  width: 44px;
+  height: 44px;
+  background-color: var(--verde);
+  border-radius: var(--radio);
+  box-shadow: 0 6px 16px rgba(114, 0, 191, 0.25);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.hamburguesa span {
+  display: block;
+  width: 22px;
+  height: 3px;
+  background-color: var(--violeta);
+  border-radius: 2px;
+}
+
+/* ============================================
+   CONTENIDO PRINCIPAL
+   ============================================ */
+
+main {
+  margin-left: calc(var(--ancho-nav) + 2rem);
+  max-width: var(--ancho-maximo);
+  padding: 2rem 2.5rem;
+}
+
+/* ============================================
+   FOOTER (colores invertidos, redondeado)
+   ============================================ */
+
+footer {
+  margin-left: calc(var(--ancho-nav) + 2rem);
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  background-color: var(--violeta);
+  color: var(--verde);
+  text-align: center;
+  padding: 1.5rem;
+  border-radius: var(--radio);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+
+/* ============================================
+   RESPONSIVE - MENÚ HAMBURGUESA (mobile)
+   ============================================ */
+
+@media (max-width: 768px) {
+
+  .hamburguesa {
+    display: flex;
+  }
+
+  header {
+    width: 240px;
+    transform: translateX(calc(-100% - 2rem));
+    transition: transform var(--transicion);
+    padding-top: 5rem;
+  }
+
+  #menu-toggle:checked ~ header {
+    transform: translateX(0);
+  }
+
+  main,
+  footer {
+    margin-left: 0;
+    padding: 2rem 1.25rem;
+  }
+
+  main {
+    padding-top: 5rem;
+  }
+
+  footer {
+    margin-right: 0;
+  }
+}
 .contenedorGeneral {
 
 }

@@ -9,17 +9,16 @@
 
 <body>
 
-    <header>
-        <nav>
-            <a href="index.html">Inicio</a>
-            <a href="cartas.html">Juego de cartas</a>
-            <a href="dados.html">Juego de dados</a>
-            <a href="preguntas.html">Juego de preguntas</a>
-            <a href="puntajes.html">Puntajes</a>
-            <a href="integrantes.html">Integrantes</a>
+ <header class="navegador">
+        <nav class="menuPrincipal">
+            <a href="index.html" class="enlaceJuego" data-juego="inicio">Inicio</a>
+            <a href="cartas.html" class="enlaceJuego" data-juego="cartas">Juego de cartas</a>
+            <a href="dados.html" class="enlaceJuego" data-juego="dados">Juego de dados</a>
+            <a href="preguntas.html" class="enlaceJuego" data-juego="preguntas">Juego de preguntas</a>
+            <a href="resultados.html" class="enlaceJuego" data-juego="resultados">Resultados</a>
         </nav>
     </header>
-
+ 
     <main>
 
         <section class="introduccion">
@@ -114,13 +113,12 @@
         </section>
 
     </main>
-
-    <footer>
-        <p>El Primero a 100</p>
+ 
+    <footer class="piePagina">
+        <p>TP Informática General &mdash; Cátedra Drelichman</p>
     </footer>
-
+ 
+    <script src="js/estado.js"></script>
     <script src="js/dados.js"></script>
-
 </body>
-
 </html>

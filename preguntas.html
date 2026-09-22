@@ -8,10 +8,16 @@
 </head>
 <body>
 
-  <header>
-    <h1>Juego de Preguntas</h1>
+  <header class="navegador">
+    <nav class="menuPrincipal">
+      <a href="index.html" class="enlaceJuego" data-juego="inicio">Inicio</a>
+      <a href="cartas.html" class="enlaceJuego" data-juego="cartas">Juego de cartas</a>
+      <a href="dados.html" class="enlaceJuego" data-juego="dados">Juego de dados</a>
+      <a href="preguntas.html" class="enlaceJuego" data-juego="preguntas">Juego de preguntas</a>
+      <a href="resultados.html" class="enlaceJuego" data-juego="resultados">Resultados</a>
+    </nav>
   </header>
-
+ 
   <main>
 
     <!-- ============ PANTALLA 1: Instrucciones ============ -->
@@ -85,6 +91,13 @@
     <p>TP Informática General</p>
   </footer>
 
+  <script src="js/datosPreguntas.js"></script>
+  <script src="js/preguntas.js"></script>
+<footer class="piePagina">
+    <p>TP Informática General &mdash; Cátedra Drelichman</p>
+  </footer>
+ 
+  <script src="js/estado.js"></script>
   <script src="js/datosPreguntas.js"></script>
   <script src="js/preguntas.js"></script>
 </body>

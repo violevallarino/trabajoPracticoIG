@@ -6,5 +6,85 @@
   <title>TP Informatica General - Menu</title>
   <link rel="stylesheet" href="css/archivo.css">
 </head>
+<body>
 
+  <header class="navegador">
+    <nav class="menuPrincipal">
+      <a href="index.html" class="enlaceJuego" data-juego="inicio">Inicio</a>
+      <a href="cartas.html" class="enlaceJuego" data-juego="cartas">Juego de cartas</a>
+      <a href="dados.html" class="enlaceJuego" data-juego="dados">Juego de dados</a>
+      <a href="preguntas.html" class="enlaceJuego" data-juego="preguntas">Juego de preguntas</a>
+      <a href="resultados.html" class="enlaceJuego" data-juego="resultados">Resultados</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="contenedorGeneral">
+
+      <section class="presentacion">
+        <h1>Trabajo Práctico 1</h1>
+        <p class="datosMateria">Informática General &mdash; Cátedra Drelichman</p>
+        <p>
+          Este sitio reúne tres juegos desarrollados en HTML, CSS y JavaScript
+          como parte del Trabajo Práctico 1 de la materia. Cada juego pone en
+          práctica distintos contenidos vistos durante la cursada: manejo del
+          DOM, eventos, estructuras de control, temporizadores, almacenamiento
+          local y consumo de una API pública. Desde el menú de navegación
+          podés acceder a cada juego y también a la tabla de resultados
+          generales del sitio.
+        </p>
+      </section>
+
+      <section class="listaJuegos">
+        <h2>Los juegos</h2>
+
+        <article class="tarjetaJuego tarjetaCartas">
+          <h3>Juego de cartas: ¿Mayor o menor?</h3>
+          <p>
+            Se muestra una carta boca arriba y tenés que adivinar si la
+            siguiente será mayor o menor. Cada acierto te acerca a tu máximo
+            puntaje.
+          </p>
+          <a href="cartas.html" class="botonPrincipal">Jugar</a>
+        </article>
+
+        <article class="tarjetaJuego tarjetaDados">
+          <h3>Juego de dados: El primero a 100</h3>
+          <p>
+            Tirá los dados para acumular puntos o plantate para guardarlos.
+            Si sale un 1 perdés lo acumulado en el turno. Gana quien llegue
+            primero a 100 puntos.
+          </p>
+          <a href="dados.html" class="botonPrincipal">Jugar</a>
+        </article>
+
+        <article class="tarjetaJuego tarjetaPreguntas">
+          <h3>Juego de preguntas</h3>
+          <p>
+            Tres jugadores compiten por turnos respondiendo 10 preguntas de
+            opción múltiple cada uno, con tiempo límite. Al finalizar los tres
+            turnos se muestra el podio de la partida.
+          </p>
+          <a href="preguntas.html" class="botonPrincipal">Jugar</a>
+        </article>
+      </section>
+
+      <section class="integrantes">
+        <h2>Integrantes del grupo</h2>
+        <ul class="listaIntegrantes">
+          <li>[Nombre Apellido]</li>
+          <li>[Nombre Apellido]</li>
+          <li>[Nombre Apellido]</li>
+        </ul>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="piePagina">
+    <p>TP Informática General &mdash; Cátedra Drelichman</p>
+  </footer>
+
+  <script src="js/estado.js"></script>
+</body>
 </html>
