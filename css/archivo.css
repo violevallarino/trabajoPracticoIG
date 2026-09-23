@@ -267,7 +267,13 @@ footer {
   }
 }
 .contenedorGeneral {
-
+    background-color: rgb(201, 241, 192);
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+    max-width: 1000px;
+    border-radius: 2px;
 }
 
 
