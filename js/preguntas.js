@@ -6,6 +6,7 @@ const seccionResultados = document.getElementById("seccionResultados");
 
 const botonEmpezarJuego = document.getElementById("botonEmpezarJuego");
 const botonSiguienteJugador = document.getElementById("botonSiguienteJugador");
+const botonJugarDeNuevo = document.getElementById("botonJugarDeNuevo");
 
 const nombreJugadorActualElemento = document.getElementById("nombreJugadorActual");
 const contadorPreguntaElemento = document.getElementById("contadorPregunta");
@@ -64,6 +65,13 @@ botonEmpezarJuego.addEventListener("click", function () {
   // preguntas distintas entre sí y nunca se repiten dentro de la partida.
   preguntasSorteadas = mezclarArreglo(arregloPreguntas);
   indiceJugadorActual = 0;
+
+  // Reseteamos el marcador de la partida anterior por si se juega una segunda vez
+  // sin recargar la página (si no, se arrastrarían las correctas/respondidas viejas).
+  resultadosJugadores = nombresJugadores.map(function (nombre) {
+    return { nombre: nombre, respondidas: 0, correctas: 0 };
+  });
+
   iniciarTurno();
 });
 
@@ -224,3 +232,30 @@ function guardarResultadosEnLocalStorage() {
 
   localStorage.setItem("historialPartidas", JSON.stringify(historialPartidas));
 }
+
+// ===== Botón "Jugar de nuevo": vuelve a las instrucciones para arrancar otra partida =====
+botonJugarDeNuevo.addEventListener("click", function () {
+  mostrarPantalla(seccionInstrucciones);
+});
+
+// ===== Al cargar la página: si ya hay una partida guardada, mostrar ese resultado =====
+// Esto es lo que resuelve "perder el resultado al navegar a otra página del sitio y volver":
+// en vez de arrancar siempre en instrucciones, se revisa localStorage primero.
+function mostrarUltimaPartidaSiExiste() {
+  const historialGuardado = localStorage.getItem("historialPartidas");
+  if (!historialGuardado) {
+    return; // no hay ninguna partida jugada todavía: se queda en instrucciones
+  }
+
+  const historialPartidas = JSON.parse(historialGuardado);
+  const ultimaPartida = historialPartidas[historialPartidas.length - 1];
+
+  // Reconstruimos el estado de resultados con los datos de la última partida guardada
+  resultadosJugadores = ultimaPartida.jugadores;
+
+  construirTablaResumen();
+  construirPodio();
+  mostrarPantalla(seccionResultados);
+}
+
+mostrarUltimaPartidaSiExiste();

@@ -6,7 +6,7 @@
 <title>TP Informatica General - Juego de preguntas</title>
 <link rel="stylesheet" href="css/archivo.css">
 </head>
-<body>
+<body id="paginaPreguntas">
 
   <header class="navegador">
     <nav class="menuPrincipal">
@@ -17,19 +17,27 @@
       <a href="resultados.html" class="enlaceJuego" data-juego="resultados">Resultados</a>
     </nav>
   </header>
- 
+
   <main>
 
     <!-- ============ PANTALLA 1: Instrucciones ============ -->
     <section id="seccionInstrucciones" class="pantallaActiva">
-      <h2>¿Cómo se juega?</h2>
-      <p>Participan 3 jugadores por turnos. Cada uno responde 10 preguntas de opción múltiple.</p>
-      <ul>
-        <li>Jugador 1 juega primero sus 10 preguntas.</li>
-        <li>Cada jugador tiene un tiempo límite total para completar su turno.</li>
-        <li>Al terminar cada jugador, se avanza manualmente al siguiente.</li>
-        <li>Al finalizar los 3 turnos se muestra el podio de esta partida.</li>
-      </ul>
+
+      <div class="bloqueTitulo">
+        <h1>Juego de preguntas: Pensá rápido</h1>
+      </div>
+
+      <div class="bloqueComoJugar">
+        <h2>¿Cómo se juega?</h2>
+        <p>Participan 3 jugadores por turnos. Cada uno responde 10 preguntas de opción múltiple.</p>
+        <ul>
+          <li>Jugador 1 juega primero sus 10 preguntas.</li>
+          <li>Cada jugador tiene un tiempo límite total para completar su turno.</li>
+          <li>Al terminar cada jugador, se avanza manualmente al siguiente.</li>
+          <li>Al finalizar los 3 turnos se muestra el podio de esta partida.</li>
+        </ul>
+      </div>
+
       <button id="botonEmpezarJuego" class="botonPrincipal" type="button">Empezar juego</button>
     </section>
 
@@ -62,23 +70,27 @@
     <section id="seccionResultados" class="pantallaOculta">
       <h2>Resultados de la partida</h2>
 
-      <table id="tablaResumenJugadores">
-        <caption>Detalle por jugador</caption>
-        <thead>
-          <tr>
-            <th scope="col">Jugador</th>
-            <th scope="col">Respondidas</th>
-            <th scope="col">Correctas</th>
-          </tr>
-        </thead>
-        <tbody id="cuerpoTablaResumen">
-          <!-- Filas generadas dinámicamente desde JS -->
-        </tbody>
-      </table>
+      <div class="tablaWrapper">
+        <table id="tablaResumenJugadores">
+          <caption>Detalle por jugador</caption>
+          <thead>
+            <tr>
+              <th scope="col">Jugador</th>
+              <th scope="col">Respondidas</th>
+              <th scope="col">Correctas</th>
+            </tr>
+          </thead>
+          <tbody id="cuerpoTablaResumen">
+            <!-- Filas generadas dinámicamente desde JS -->
+          </tbody>
+        </table>
+      </div>
 
       <div id="podio" class="podio">
         <!-- 3 puestos generados dinámicamente desde JS -->
       </div>
+
+      <button id="botonJugarDeNuevo" class="botonPrincipal" type="button">Jugar de nuevo</button>
 
       <nav class="navegacionFinal">
         <a id="enlaceResultadosGenerales" href="resultados.html">Ver tabla de resultados generales</a>
@@ -87,16 +99,10 @@
 
   </main>
 
-  <footer>
-    <p>TP Informática General</p>
-  </footer>
-
-  <script src="js/datosPreguntas.js"></script>
-  <script src="js/preguntas.js"></script>
-<footer class="piePagina">
+  <footer class="piePagina">
     <p>TP Informática General &mdash; Cátedra Drelichman</p>
   </footer>
- 
+
   <script src="js/estado.js"></script>
   <script src="js/datosPreguntas.js"></script>
   <script src="js/preguntas.js"></script>
