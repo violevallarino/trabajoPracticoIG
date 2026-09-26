@@ -675,3 +675,22 @@ nav.menuPrincipal{
 @media (max-width: 780px){
   .encabezadoTurno{ flex-direction: column; align-items: stretch; text-align: center; }
 }
+
+.premioGanador {
+  text-align: center;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem; /* aire antes del botón "Jugar de nuevo" */
+}
+.imagenPremio {
+  display: block;
+  max-width: 300px;
+  width: 100%;
+  border-radius: 12px;
+  margin: 0.5rem auto 0 auto; 
+}
+
+.mensajeEstadoPremio {
+  font-size: 0.85rem;
+  color: #777;
+  margin-top: 0.4rem;
+}

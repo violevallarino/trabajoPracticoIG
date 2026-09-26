@@ -25,6 +25,9 @@ const nombresJugadores = ["Jugador 1", "Jugador 2", "Jugador 3"];
 const tiempoLimitePorJugador = 120; // 2 minutos, en segundos
 const preguntasPorJugador = 10;
 
+// Imagen que se muestra si la API del premio no responde
+const RUTA_IMAGEN_PREMIO_SIN_API = "img/perroSinAPI.jpg";
+
 let indiceJugadorActual = 0;
 let indicePreguntaActual = 0;
 let tiempoRestante = tiempoLimitePorJugador;
@@ -188,6 +191,10 @@ function mostrarResultadosFinales() {
   construirPodio();
   guardarResultadosEnLocalStorage();
   mostrarPantalla(seccionResultados);
+
+  // El premio se busca aparte y se agrega cuando esté listo,
+  // así el resto de la pantalla de resultados no espera al fetch.
+  mostrarPremioGanador();
 }
 
 function construirTablaResumen() {
@@ -217,6 +224,79 @@ function construirPodio() {
     puesto.textContent = (posicion + 1) + "° " + jugador.nombre + " (" + jugador.correctas + " correctas)";
     podioElemento.appendChild(puesto);
   });
+}
+
+// ===== Determina si hay un único ganador o empate en el primer puesto =====
+// Devuelve un objeto { hayEmpate, ganadores } donde "ganadores" es un array
+// con 1 jugador (ganador único) o varios (empatados en la cima).
+function obtenerGanadores() {
+  const maximoCorrectas = Math.max.apply(null, resultadosJugadores.map(function (jugador) {
+    return jugador.correctas;
+  }));
+
+  const ganadores = resultadosJugadores.filter(function (jugador) {
+    return jugador.correctas === maximoCorrectas;
+  });
+
+  return { hayEmpate: ganadores.length > 1, ganadores: ganadores };
+}
+
+// ===== Pide a la API una foto de perro random para usar como premio =====
+async function obtenerFotoPremio() {
+  const url = "https://dog.ceo/api/breeds/image/random";
+  const respuesta = await fetch(url);
+
+  if (!respuesta.ok) {
+    // La API respondió pero con error (por ejemplo 500 o 429 por límite de uso)
+    throw new Error("La API de perros respondió con error: " + respuesta.status);
+  }
+
+  const datos = await respuesta.json();
+  return datos.message; // URL de la imagen
+}
+
+// ===== Arma el bloque de premio y lo agrega debajo del podio =====
+async function mostrarPremioGanador() {
+  // Si ya existe un premio de una partida anterior (jugar de nuevo), lo sacamos primero
+  const premioAnterior = document.getElementById("premioGanador");
+  if (premioAnterior) {
+    premioAnterior.remove();
+  }
+
+  const { hayEmpate, ganadores } = obtenerGanadores();
+
+  const contenedorPremio = document.createElement("div");
+  contenedorPremio.id = "premioGanador";
+  contenedorPremio.className = "premioGanador";
+
+  const titulo = document.createElement("h3");
+  if (hayEmpate) {
+    const nombresEmpatados = ganadores.map(function (jugador) { return jugador.nombre; }).join(" y ");
+    titulo.textContent = "🤝 ¡Empate entre " + nombresEmpatados + "! Un premio para los dos";
+  } else {
+    titulo.textContent = "🏆 Premio para " + ganadores[0].nombre;
+  }
+  contenedorPremio.appendChild(titulo);
+
+  const imagenPremio = document.createElement("img");
+  imagenPremio.className = "imagenPremio";
+  imagenPremio.alt = "Premio sorpresa";
+  contenedorPremio.appendChild(imagenPremio);
+
+  const mensajeEstadoPremio = document.createElement("p");
+  mensajeEstadoPremio.className = "mensajeEstadoPremio";
+  contenedorPremio.appendChild(mensajeEstadoPremio);
+
+  podioElemento.after(contenedorPremio);
+
+  try {
+    imagenPremio.src = await obtenerFotoPremio();
+    mensajeEstadoPremio.textContent = ""; // todo salió bien, no hace falta aviso
+  } catch (error) {
+    console.error("No se pudo obtener la foto de la API, se usa la imagen local:", error);
+    imagenPremio.src = RUTA_IMAGEN_PREMIO_SIN_API;
+    mensajeEstadoPremio.textContent = "No se pudo conectar con la API de fotos, así que acá tenés tu premio de todas formas 🐶";
+  }
 }
 
 // ===== Persistencia: guarda esta partida en el historial general =====
@@ -256,6 +336,7 @@ function mostrarUltimaPartidaSiExiste() {
   construirTablaResumen();
   construirPodio();
   mostrarPantalla(seccionResultados);
+  mostrarPremioGanador();
 }
 
 mostrarUltimaPartidaSiExiste();
