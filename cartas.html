@@ -29,15 +29,37 @@
         </section>
         <div class="contenedorCartas"> <!--Contenedor para ajustar el juego-->
           <section>
-            <!--Acá va a ir el juego-->
+            <div>
+              <!--Inicio-->
+              <button type="button" id="botonEmpezar">Empezar</button>
+            </div>
+
+            <div id="juego">
+              <!--Juego-->
+              <div class="puntaje">
+                <p>Vidas: <span id="vidas">3</span></p>
+                <p>Puntos: <span id="puntos">0</span></p>
+              </div>
+
+              <div id="cartas" style="display: flex; justify-content: center; gap: 20px;">
+                <img src="img/1.png" alt="Carta Actual" width="300" id="cartaActual">
+                <img src="img/dorso.png" alt="Próxima Carta" id="imagenCarta" width="300">
+              </div>
+
+              <div id="botonesMayorMenor">
+                <button type="button" id="botonMayor">Mayor</button>
+                <button type="" id="botonMenor">Menor</button>
+              </div>
+
+            </div>
+
           </section>
         </div>
          <footer class="piePagina">
-    <p>TP Informática General &mdash; Cátedra Drelichman</p>
-  </footer>
+            <p>TP Informática General &mdash; Cátedra Drelichman</p>
+          </footer>
         </div>
-  <script src="js/estado.js"></script>
+  <script src="js/estados.js"></script>
   <script src="js/cartas.js"></script>
 </body>
 </html>
- 
