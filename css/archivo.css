@@ -694,3 +694,83 @@ nav.menuPrincipal{
   color: #777;
   margin-top: 0.4rem;
 }
+
+/* =======================================================
+   resultados
+   ======================================================= */
+
+.paginaResultados{
+  padding: 40px clamp(24px, 5vw, 80px) 80px;
+}
+
+.encabezadoResultados{
+  max-width: 900px;
+  margin-bottom: 48px;
+}
+
+.encabezadoResultados h1{
+  margin-bottom: 12px;
+}
+
+.encabezadoResultados p{
+  font-size: 18px;
+}
+
+.tablasResultados{
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-width: 900px;
+}
+
+.tablaResultado{
+  background: var(--wine);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+}
+
+.tablaResultado h2{
+  margin-bottom: 22px;
+}
+
+.tablaResultado table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tablaResultado th,
+.tablaResultado td{
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 194, 0, .2);
+}
+
+.tablaResultado th{
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.tablaResultado td{
+  color: var(--coral);
+}
+
+.tablaResultado tr:last-child td{
+  border-bottom: none;
+}
+
+#resultado-dados table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#resultado-dados th,
+#resultado-dados td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: center;
+}
+
+#resultado-dados th {
+    font-weight: bold;
+}
