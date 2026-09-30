@@ -283,6 +283,19 @@ footer{ padding: 24px clamp(24px, 5vw, 80px) 48px; font-size: 14px; opacity: .85
   font-weight: 600;
   color: var(--gold);
 }
+.juego.juego-terminado {
+    background-color: #8b1e2d;
+}
+
+.juego.juego-terminado #jugador-actual {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.juego.juego-terminado #mensaje-juego {
+    font-size: 20px;
+}
  
 /* =======================================================
    index.html — bloques apilados con solapamiento al scroll
