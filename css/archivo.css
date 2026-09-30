@@ -774,3 +774,15 @@ nav.menuPrincipal{
 #resultado-dados th {
     font-weight: bold;
 }
+#tablaResumenJugadores,
+#tablaResumenJugadores th,
+#tablaResumenJugadores td {
+    border: 1px solid #333;
+    border-collapse: collapse;
+    padding: 8px 12px;
+    text-align: center;
+}
+
+#tablaResumenJugadores {
+    width: 100%;
+}
