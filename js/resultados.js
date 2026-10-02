@@ -147,3 +147,5 @@ if (historialPreguntas.length === 0) {
     tablaPreguntas.appendChild(cuerpoTablaPreguntas);
     resultadoPreguntas.appendChild(tablaPreguntas);
 }
+
+// ================== JUEGO DE CARTAS ==================
