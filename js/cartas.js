@@ -14,8 +14,6 @@ const btnEmpezar = document.querySelector("#botonEmpezar");
 const btnMayor = document.querySelector("#botonMayor");
 const btnMenor = document.querySelector("#botonMenor");
 
-let cartaImagen = document.querySelector("#imagenCarta");
-
 // Para ir editando el texto de los puntos y las vidas restantes:
 
 const puntosActuales = document.querySelector("#puntos");
@@ -36,14 +34,14 @@ let actualCarta = document.querySelector("#cartaActual");
 // Cuando el boton se presione, aparecerá el juego y una carta
 
 btnEmpezar.addEventListener("click", function() {
-    areaDeJuego.hidden = false
-    btnEmpezar.hidden = true
+    areaDeJuego.hidden = false;
+    btnEmpezar.hidden = true;
 
     // Sale la carta random y se asigna a la imagen
     cartaNumero = cartaAleatoria();
 
     actualCarta.src = "img/" + cartaNumero + ".png";
-    actualCarta.alt = "Carta" + cartaNumero;
+    actualCarta.alt = "Carta " + cartaNumero;
 
     cartaDorso.src = "img/dorso.png";
 
@@ -86,7 +84,7 @@ btnMayor.addEventListener("click", function() {
 
         // Se espera un tiempo para que la persona vea el cambio, y luego se cambian las cartas
 
-        cartaNumero = proximaCarta
+        cartaNumero = proximaCarta;
         actualCarta.src = "img/" + cartaNumero + ".png";
         cartaDorso.src = "img/dorso.png";
 
@@ -97,7 +95,7 @@ btnMayor.addEventListener("click", function() {
             btnMenor.disabled = false;
         }
 
-    }, 1500);
+    }, 1000);
 });
 
 // Ahora sucede lo mismo pero con el boton Menor
@@ -157,5 +155,5 @@ function verificarFinal() {
         setTimeout(() => {
             location.reload();
         }, 5000);
-    };
+    }
 }
