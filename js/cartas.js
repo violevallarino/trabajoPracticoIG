@@ -1,10 +1,12 @@
 let areaDeJuego = document.querySelector("#juego");
+let perderJuego = document.querySelector("#gameOver");
 
 areaDeJuego.hidden = true; // Para que el juego este oculto ante de empezar
+perderJuego.hidden = true; // Para que el game over este oculto antes de empezar
 
 let vidas = 3;
 let puntos = 0;
-let cartaNumero = 0; // Carta en mesa
+let cartaNumero = 0; // Carta en mesa (actual)
 
 // Botones
 
@@ -104,14 +106,19 @@ btnMenor.addEventListener("click", function() {
         cartaDorso.src = "img/dorso.png";
 
         verificarFinal();
-    }, 1500);
+    }, 1000);
 });
 
-// Funcion que detecta cuando termina el juego
+// Funcion que detecta cuando termina el juego y en 5 segundos lo reinicia
 
 function verificarFinal() {
     if (vidas === 0) {
-        alert("¡Juego Terminado! Has conseguido" + puntos + "puntos.");
-        location.reload();
+        areaDeJuego.hidden = true;
+        perderJuego.hidden = false;
+        btnEmpezar.hidden = true;
+
+        setTimeout(() => {
+            location.reload();
+        }, 5000);
     };
 }

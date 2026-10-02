@@ -180,7 +180,17 @@ footer{ padding: 24px clamp(24px, 5vw, 80px) 48px; font-size: 14px; opacity: .85
   align-items: center;
   justify-content: center;
 }
- 
+
+#emojiPerder {
+  display: flex;
+  justify-content: center;
+}
+
+#gameOver {
+  text-align: center;
+  margin-top: 20px;
+}
+
 /* =======================================================
    dados.html
    ======================================================= */
