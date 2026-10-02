@@ -1,5 +1,7 @@
 // Resultados de los juegos
 
+// ===================== JUEGO DE DADOS =====================
+
 const resultadoDados = document.querySelector("#resultado-dados");
 
 // Obtener el historial de partidas
@@ -53,16 +55,13 @@ if (historialDados.length === 0) {
         numeroPartida.textContent = i + 1;
 
         const puntajeJugador1 = document.createElement("td");
-        puntajeJugador1.textContent =
-            historialDados[i].jugador1;
+        puntajeJugador1.textContent = historialDados[i].jugador1;
 
         const puntajeJugador2 = document.createElement("td");
-        puntajeJugador2.textContent =
-            historialDados[i].jugador2;
+        puntajeJugador2.textContent = historialDados[i].jugador2;
 
         const ganador = document.createElement("td");
-        ganador.textContent =
-            "Jugador " + historialDados[i].ganador;
+        ganador.textContent = "Jugador " + historialDados[i].ganador;
 
         fila.appendChild(numeroPartida);
         fila.appendChild(puntajeJugador1);
@@ -77,4 +76,74 @@ if (historialDados.length === 0) {
 
     // Mostrar la tabla
     resultadoDados.appendChild(tabla);
+}
+
+// ================== JUEGO DE PREGUNTAS ==================
+
+const resultadoPreguntas = document.querySelector("#resultado-preguntas");
+
+// Historial guardado por preguntas.js
+const historialPreguntas =
+    JSON.parse(localStorage.getItem("historialPartidas")) || [];
+
+if (historialPreguntas.length === 0) {
+
+    resultadoPreguntas.innerHTML =
+        "<p>Todavía no hay partidas registradas.</p>";
+
+} else {
+
+    // Tomamos la última partida jugada
+    const ultimaPartida = historialPreguntas[historialPreguntas.length - 1];
+
+    // Misma tabla que en preguntas.html (mismo id para que use los mismos estilos)
+    const tablaPreguntas = document.createElement("table");
+    tablaPreguntas.id = "tablaResumenJugadores";
+
+    const leyenda = document.createElement("caption");
+    leyenda.textContent = "Detalle por jugador (última partida)";
+    tablaPreguntas.appendChild(leyenda);
+
+    // Encabezado
+    const encabezadoPreguntas = document.createElement("thead");
+    const filaEncabezadoPreguntas = document.createElement("tr");
+
+    const titulosColumnas = ["Jugador", "Respondidas", "Correctas"];
+
+    for (let i = 0; i < titulosColumnas.length; i++) {
+        const columna = document.createElement("th");
+        columna.scope = "col";
+        columna.textContent = titulosColumnas[i];
+        filaEncabezadoPreguntas.appendChild(columna);
+    }
+
+    encabezadoPreguntas.appendChild(filaEncabezadoPreguntas);
+    tablaPreguntas.appendChild(encabezadoPreguntas);
+
+    // Cuerpo: una fila por jugador
+    const cuerpoTablaPreguntas = document.createElement("tbody");
+
+    for (let i = 0; i < ultimaPartida.jugadores.length; i++) {
+
+        const jugador = ultimaPartida.jugadores[i];
+        const fila = document.createElement("tr");
+
+        const celdaNombre = document.createElement("td");
+        celdaNombre.textContent = jugador.nombre;
+
+        const celdaRespondidas = document.createElement("td");
+        celdaRespondidas.textContent = jugador.respondidas;
+
+        const celdaCorrectas = document.createElement("td");
+        celdaCorrectas.textContent = jugador.correctas;
+
+        fila.appendChild(celdaNombre);
+        fila.appendChild(celdaRespondidas);
+        fila.appendChild(celdaCorrectas);
+
+        cuerpoTablaPreguntas.appendChild(fila);
+    }
+
+    tablaPreguntas.appendChild(cuerpoTablaPreguntas);
+    resultadoPreguntas.appendChild(tablaPreguntas);
 }

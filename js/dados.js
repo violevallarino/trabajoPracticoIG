@@ -13,6 +13,7 @@ const botonLanzar = document.querySelector("#boton-lanzar");
 const botonPlantarse = document.querySelector("#boton-plantarse");
 const botonNuevaPartida = document.querySelector("#boton-nueva-partida");
 const mensajeJuego = document.querySelector("#mensaje-juego");
+const contenedorJuego = document.querySelector(".juego");
 
 // Variables del juego
 let jugador = 1;
@@ -20,6 +21,23 @@ let totalJugador1 = 0;
 let totalJugador2 = 0;
 let puntosActuales = 0;
 let partidaTerminada = false;
+
+let historialDados =
+    JSON.parse(localStorage.getItem("historialDados")) || [];
+
+let partidasJugadas = historialDados.length;
+
+let victoriasJugador1 = 0;
+let victoriasJugador2 = 0;
+
+for (let i = 0; i < historialDados.length; i++) {
+
+    if (historialDados[i].ganador === 1) {
+        victoriasJugador1++;
+    } else {
+        victoriasJugador2++;
+    }
+}
 
 // Función para tirar un dado
 function tirarDado() {
@@ -55,7 +73,6 @@ function cambiarJugador() {
 
 // Lanza los dos dados
 function lanzarDados() {
-
     if (partidaTerminada) {
         return;
     }
@@ -63,7 +80,6 @@ function lanzarDados() {
     const valorDado1 = tirarDado();
     const valorDado2 = tirarDado();
 
-    // Cambia las imágenes de los dados
     dado1.src = "img/dado-" + valorDado1 + ".png";
     dado2.src = "img/dado-" + valorDado2 + ".png";
 
@@ -80,7 +96,6 @@ function lanzarDados() {
 
     } else {
 
-        // Sumar los dados a los puntos de la ronda
         puntosActuales += valorDado1 + valorDado2;
 
         puntosRonda.textContent = puntosActuales;
@@ -117,7 +132,7 @@ function plantarse() {
         let ganador;
         let puntajeGanador;
 
-        // Determinar quién ganó
+        // Determinar ganador de la partida
         if (totalJugador1 >= 100) {
 
             ganador = 1;
@@ -129,36 +144,97 @@ function plantarse() {
             puntajeGanador = totalJugador2;
         }
 
-        // Mostrar el ganador
+        // Sumar una partida jugada
+        partidasJugadas++;
+
+        // Sumar victoria al jugador correspondiente
+        if (ganador === 1) {
+
+            victoriasJugador1++;
+
+        } else {
+
+            victoriasJugador2++;
+        }
+
+        // Ocultar los dados
+        dado1.style.display = "none";
+        dado2.style.display = "none";
+
+        // Ocultar botones de juego
+        botonLanzar.style.display = "none";
+        botonPlantarse.style.display = "none";
+
+        // Cambiar color del contenedor
+        contenedorJuego.classList.add("juego-terminado");
+
+        // Mostrar resultado de la partida
         jugadorActual.textContent =
             "¡GANÓ EL JUGADOR " + ganador + "!";
 
         mensajeJuego.textContent =
-            "¡Jugador " + ganador + " ganó con " +
-            puntajeGanador + " puntos!";
+            "Jugador " + ganador +
+            " ganó esta partida con " +
+            puntajeGanador + " puntos.";
 
-        // Crear el resultado de esta partida
+        // Guardar resultado de la partida
         const nuevaPartida = {
             jugador1: totalJugador1,
             jugador2: totalJugador2,
             ganador: ganador
         };
 
-        // Obtener el historial de partidas anteriores
-        let historialDados =
-            JSON.parse(localStorage.getItem("historialDados")) || [];
-
-        // Agregar la nueva partida al historial
+        
         historialDados.push(nuevaPartida);
 
-        // Guardar nuevamente el historial
         localStorage.setItem(
             "historialDados",
             JSON.stringify(historialDados)
         );
 
-        // Guardar el récord
         guardarRecord("recordDados", puntajeGanador);
+
+        // Mostrar el marcador de la serie
+        if (partidasJugadas < 5) {
+
+            mensajeJuego.textContent =
+                "Jugador " + ganador +
+                " ganó esta partida. " +
+                "Serie: Jugador 1 " +
+                victoriasJugador1 +
+                " - " +
+                victoriasJugador2 +
+                " Jugador 2. " +
+                "Partida " +
+                partidasJugadas +
+                " de 5.";
+
+        } else {
+
+            // Terminó la serie de 5 partidas
+            if (victoriasJugador1 > victoriasJugador2) {
+
+                jugadorActual.textContent =
+                    "¡JUGADOR 1 GANÓ LA SERIE!";
+
+            } else if (victoriasJugador2 > victoriasJugador1) {
+
+                jugadorActual.textContent =
+                    "¡JUGADOR 2 GANÓ LA SERIE!";
+
+            } else {
+
+                jugadorActual.textContent =
+                    "¡LA SERIE TERMINÓ EMPATADA!";
+            }
+
+            mensajeJuego.textContent =
+                "Resultado final: Jugador 1 " +
+                victoriasJugador1 +
+                " - " +
+                victoriasJugador2 +
+                " Jugador 2.";
+        }
 
         return;
     }
@@ -173,6 +249,19 @@ function plantarse() {
 // Comenzar una nueva partida
 function nuevaPartida() {
 
+    // Si ya se jugaron 5 partidas, comenzar una nueva serie
+    let historialDados =
+    JSON.parse(localStorage.getItem("historialDados")) || [];
+
+if (historialDados.length >= 5) {
+
+    localStorage.removeItem("historialDados");
+
+    partidasJugadas = 0;
+    victoriasJugador1 = 0;
+    victoriasJugador2 = 0;
+}
+
     jugador = 1;
     totalJugador1 = 0;
     totalJugador2 = 0;
@@ -185,6 +274,17 @@ function nuevaPartida() {
 
     dado1.src = "img/dado-1.png";
     dado2.src = "img/dado-1.png";
+
+    dado1.style.display = "block";
+    dado2.style.display = "block";
+
+    botonLanzar.style.display = "block";
+    botonPlantarse.style.display = "block";
+
+    contenedorJuego.classList.remove("juego-terminado");
+
+    jugadorActual.textContent =
+        "Jugador 1";
 
     mensajeJuego.textContent =
         "Nueva partida. ¡Comienza el Jugador 1!";

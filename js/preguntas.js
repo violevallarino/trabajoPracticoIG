@@ -22,7 +22,7 @@ const podioElemento = document.getElementById("podio");
 
 // ===== Estado del juego =====
 const nombresJugadores = ["Jugador 1", "Jugador 2", "Jugador 3"];
-const tiempoLimitePorJugador = 120; // 2 minutos, en segundos
+const tiempoLimitePorJugador = 120; 
 const preguntasPorJugador = 10;
 
 // Imagen que se muestra si la API del premio no responde
@@ -51,17 +51,17 @@ function mostrarPantalla(pantallaAMostrar) {
   pantallaAMostrar.classList.add("pantallaActiva");
 }
 
-// ===== Mezcla un arreglo sin modificar el original (algoritmo Fisher-Yates) =====
+// Hace una copia, mezcla las preguntas sin modificar el archivo original (todas las mezclas posibles tienen la misma probabilidad) =====
 function mezclarArreglo(arregloOriginal) {
   const copia = [...arregloOriginal];
-  for (let i = copia.length - 1; i > 0; i--) {
+  for (let i = copia.length - 1; i > 0; i--) { // se repite 29 veces
     const j = Math.floor(Math.random() * (i + 1));
     [copia[i], copia[j]] = [copia[j], copia[i]];
-  }
+  } //<- se ejecuta en cada vuelta
   return copia;
 }
 
-// ===== Inicio del juego (botón "Empezar juego") =====
+// Inicio del juego (botón "Empezar juego")
 botonEmpezarJuego.addEventListener("click", function () {
   // Se mezclan las 30 preguntas UNA sola vez por partida.
   // Al dividir el pool mezclado en 3 bloques de 10, cada jugador recibe
