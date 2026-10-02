@@ -52,6 +52,8 @@ btnEmpezar.addEventListener("click", function() {
 // Boton Mayor
 
 btnMayor.addEventListener("click", function() {
+    btnMayor.disabled = true;
+    btnMenor.disabled = true;
 
     // Sale la carta aleatoria
     let proximaCarta = cartaAleatoria();
@@ -64,10 +66,10 @@ btnMayor.addEventListener("click", function() {
     if (proximaCarta > cartaNumero) {
         puntos++;
         puntosActuales.innerText = puntos;
-    } else {
+    } else if (proximaCarta < cartaNumero) {
         vidas--;
         vidasActuales.innerText = vidas;
-    };
+    }
 
     setTimeout(function() {
 
@@ -78,12 +80,20 @@ btnMayor.addEventListener("click", function() {
         cartaDorso.src = "img/dorso.png";
 
         verificarFinal();
+
+        if (vidas > 0) {
+            btnMayor.disabled = false;
+            btnMenor.disabled = false;
+        }
+
     }, 1500);
 });
 
 // Ahora sucede lo mismo pero con el boton Menor
 
 btnMenor.addEventListener("click", function() {
+    btnMayor.disabled = true;
+    btnMenor.disabled = true;
 
     let proximaCarta = cartaAleatoria();
 
@@ -92,10 +102,10 @@ btnMenor.addEventListener("click", function() {
     if (proximaCarta < cartaNumero) {
         puntos++;
         puntosActuales.innerText = puntos;
-    } else {
+    } else if (proximaCarta > cartaNumero) {
         vidas--;
         vidasActuales.innerText = vidas;
-    };
+    }
 
     setTimeout(function() {
 
@@ -106,6 +116,12 @@ btnMenor.addEventListener("click", function() {
         cartaDorso.src = "img/dorso.png";
 
         verificarFinal();
+
+        if (vidas > 0) {
+            btnMayor.disabled = false;
+            btnMenor.disabled = false;
+        }
+
     }, 1000);
 });
 
