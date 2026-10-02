@@ -66,9 +66,20 @@ btnMayor.addEventListener("click", function() {
     if (proximaCarta > cartaNumero) {
         puntos++;
         puntosActuales.innerText = puntos;
+
+        puntosActuales.style.color = "var(--gold)";
+        setTimeout(() => {
+            puntosActuales.style.color = "";
+        }, 1000);
+
     } else if (proximaCarta < cartaNumero) {
         vidas--;
         vidasActuales.innerText = vidas;
+
+        vidasActuales.style.color = "var(--crimson)";
+        setTimeout(() => {
+            vidasActuales.style.color = "";
+        }, 1000);
     }
 
     setTimeout(function() {
@@ -102,9 +113,19 @@ btnMenor.addEventListener("click", function() {
     if (proximaCarta < cartaNumero) {
         puntos++;
         puntosActuales.innerText = puntos;
+
+        puntosActuales.style.color = "var(--gold)";
+        setTimeout(() => {
+            puntosActuales.style.color = "";
+        }, 1000);
     } else if (proximaCarta > cartaNumero) {
         vidas--;
         vidasActuales.innerText = vidas;
+
+        vidasActuales.style.color = "var(--crimson)";
+        setTimeout(() => {
+            vidasActuales.style.color = "";
+        }, 1000);
     }
 
     setTimeout(function() {
