@@ -186,7 +186,7 @@ footer{ padding: 24px clamp(24px, 5vw, 80px) 48px; font-size: 14px; opacity: .85
   justify-content: center;
 }
 
-#gameOver {
+#tituloGameOver {
   text-align: center;
   margin-top: 20px;
 }
