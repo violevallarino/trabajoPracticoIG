@@ -7,68 +7,71 @@
         <link rel="stylesheet" href="css/archivo.css">
       </head>
     <body id="paginaCartas">
-<header class="navegador">
-    <nav class="menuPrincipal">
-      <a href="index.html" class="enlaceJuego" data-juego="inicio">Inicio</a>
-      <a href="cartas.html" class="enlaceJuego" data-juego="cartas">Juego de cartas</a>
-      <a href="dados.html" class="enlaceJuego" data-juego="dados">Juego de dados</a>
-      <a href="preguntas.html" class="enlaceJuego" data-juego="preguntas">Juego de preguntas</a>
-      <a href="resultados.html" class="enlaceJuego" data-juego="resultados">Resultados</a>
-    </nav>
-  </header>
-      <main>
-        <div class="contenedorGeneral"> <!-- Contenedor para que todas las páginas tengan la misma diagramación-->
-        <section>
-          <h1>Juego de Cartas : ¿Mayor o Menor?</h1>
-        </section>
-        <section>
-          <h2>Instrucciones del juego</h2>
-          <p>Al iniciar el juego se muestra una carta boca arriba en el centro de la mesa. Tu objetivo es adivinar si la siguiente carta que aparece será un número mayor o menor.<br>Si es correcto, pasarás a la siguiente carta.</p>
-          <br>
-          <p>¡Alcanza tu máximo puntaje!</p>
-        </section>
-        <div class="contenedorCartas"> <!--Contenedor para ajustar el juego-->
-          <section>
-
-            <div>
-              <!--Inicio-->
-              <button type="button" id="botonEmpezar">Empezar</button>
-            </div>
-
-            <div id="juego">
-              <!--Juego-->
-              <div class="puntaje">
-                <p>Vidas: <span id="vidas">3</span></p>
-                <p>Puntos: <span id="puntos">0</span></p>
-              </div>
-
-              <div id="cartas" style="display: flex; justify-content: center; gap: 20px;">
-                <img src="img/1.png" alt="Carta Actual" width="300" id="cartaActual">
-                <img src="img/dorso.png" alt="Próxima Carta" id="imagenCarta" width="300">
-              </div>
-
-              <div id="botonesMayorMenor">
-                <button type="button" id="botonMayor">Mayor</button>
-                <button type="" id="botonMenor">Menor</button>
-              </div>
-
-            </div>
-
-            <div id="gameOver">
+      <header class="navegador">
+          <nav class="menuPrincipal">
+            <a href="index.html" class="enlaceJuego" data-juego="inicio">Inicio</a>
+            <a href="cartas.html" class="enlaceJuego" data-juego="cartas">Juego de cartas</a>
+            <a href="dados.html" class="enlaceJuego" data-juego="dados">Juego de dados</a>
+            <a href="preguntas.html" class="enlaceJuego" data-juego="preguntas">Juego de preguntas</a>
+            <a href="resultados.html" class="enlaceJuego" data-juego="resultados">Resultados</a>
+          </nav>
+      </header>
+          <main>
+            <div class="contenedorGeneral"> <!-- Contenedor para que todas las páginas tengan la misma diagramación-->
+            <section>
+              <h1>Juego de Cartas : ¿Mayor o Menor?</h1>
+            </section>
+            <section>
+              <h2>Instrucciones del juego</h2>
+              <p>Al iniciar el juego se muestra una carta boca arriba en el centro de la mesa. Tu objetivo es adivinar si la siguiente carta que aparece será un número mayor o menor.<br>Si es correcto, pasarás a la siguiente carta.</p>
               <br>
-              <h2 id="gameOver">Game Over</h2>
-              <img src="img/emoji-perder.png" alt="Emoji de perder" width="200" id="emojiPerder">
-              <p>¡Has perdido todas tus vidas!</p>
+              <p>¡Alcanza tu máximo puntaje!</p>
+            </section>
+            <div class="contenedorCartas"> <!--Contenedor para ajustar el juego-->
+              <section>
+
+                <div>
+                  <!--Inicio-->
+                  <button type="button" id="botonEmpezar">Empezar</button>
+                </div>
+
+                <div id="juego">
+                  <!--Juego-->
+                  <div class="puntaje">
+                    <p>Vidas: <span id="vidas">3</span></p>
+                    <p>Puntos: <span id="puntos">0</span></p>
+                  </div>
+
+                  <div id="cartas" style="display: flex; justify-content: center; gap: 20px;">
+                    <img src="img/1.png" alt="Carta Actual" width="300" id="cartaActual">
+                    <img src="img/dorso.png" alt="Próxima Carta" id="imagenCarta" width="300">
+                  </div>
+
+                  <div id="botonesMayorMenor">
+                    <button type="button" id="botonMayor">Mayor</button>
+                    <button type="" id="botonMenor">Menor</button>
+                  </div>
+
+                </div>
+
+                <div id="gameOver">
+                  <!--Game Over-->
+                  <br>
+                  <h2 id="gameOver">Game Over</h2>
+                  <img src="img/emoji-perder.png" alt="Emoji de perder" width="200" id="emojiPerder">
+                  <p>¡Has perdido todas tus vidas!</p>
+
+                </div>
+                
+              </section>
             </div>
-          </section>
-        </div>
-      </main>
-        <div>
-         <footer class="piePagina">
-            <p>TP Informática General &mdash; Cátedra Drelichman</p>
-          </footer>
-        </div>
-  <script src="js/estados.js"></script>
-  <script src="js/cartas.js"></script>
-</body>
-</html>
+          </main>
+            <div>
+            <footer class="piePagina">
+                <p>TP Informática General &mdash; Cátedra Drelichman</p>
+              </footer>
+            </div>
+      <script src="js/estados.js"></script>
+      <script src="js/cartas.js"></script>
+    </body>
+  </html>
