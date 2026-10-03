@@ -787,13 +787,24 @@ nav.menuPrincipal{
     margin-top: 20px;
 }
 
-#resultado-dados th,
-#resultado-dados td {
-    border: 1px solid #ccc;
-    padding: 12px;
-    text-align: center;
+#resultado-dados th {
+    background-color: #d5003d;
+    color: #ffd900;
+    padding: 18px 20px;
+    text-align: left;
+    font-weight: bold;
 }
 
-#resultado-dados th {
-    font-weight: bold;
+#resultado-dados td {
+    padding: 18px 20px;
+    color: #ffd900;
+    text-align: left;
+}
+
+#resultado-dados tbody tr:nth-child(odd) {
+    background-color: #a4083b;
+}
+
+#resultado-dados tbody tr:nth-child(even) {
+    background-color: #b51c40;
 }
