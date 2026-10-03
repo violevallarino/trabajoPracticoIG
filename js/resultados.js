@@ -149,3 +149,62 @@ if (historialPreguntas.length === 0) {
 }
 
 // ================== JUEGO DE CARTAS ==================
+
+const resultadoCartas = document.querySelector("#resultado-cartas");
+
+const historialCartas =
+    JSON.parse(localStorage.getItem("historialCartas")) || [];
+
+if (historialCartas.length === 0) {
+
+    resultadoCartas.innerHTML =
+        "<p>Todavía no hay partidas registradas.</p>";
+
+} else {
+
+    // Mismo id que la tabla de preguntas, así usa los mismos estilos
+    const tablaCartas = document.createElement("table");
+    tablaCartas.id = "tablaResumenJugadores";
+
+    const leyendaCartas = document.createElement("caption");
+    leyendaCartas.textContent = "Detalle por partida";
+    tablaCartas.appendChild(leyendaCartas);
+
+    // Encabezado
+    const encabezadoCartas = document.createElement("thead");
+    const filaEncabezadoCartas = document.createElement("tr");
+
+    const titulosCartas = ["Partida", "Puntos"];
+
+    for (let i = 0; i < titulosCartas.length; i++) {
+        const columna = document.createElement("th");
+        columna.scope = "col";
+        columna.textContent = titulosCartas[i];
+        filaEncabezadoCartas.appendChild(columna);
+    }
+
+    encabezadoCartas.appendChild(filaEncabezadoCartas);
+    tablaCartas.appendChild(encabezadoCartas);
+
+    // Cuerpo: una fila por partida
+    const cuerpoTablaCartas = document.createElement("tbody");
+
+    for (let i = 0; i < historialCartas.length; i++) {
+
+        const fila = document.createElement("tr");
+
+        const celdaPartida = document.createElement("td");
+        celdaPartida.textContent = i + 1;
+
+        const celdaPuntos = document.createElement("td");
+        celdaPuntos.textContent = historialCartas[i].puntos;
+
+        fila.appendChild(celdaPartida);
+        fila.appendChild(celdaPuntos);
+
+        cuerpoTablaCartas.appendChild(fila);
+    }
+
+    tablaCartas.appendChild(cuerpoTablaCartas);
+    resultadoCartas.appendChild(tablaCartas);
+}
