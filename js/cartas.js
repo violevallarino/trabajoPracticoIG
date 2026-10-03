@@ -148,6 +148,12 @@ btnMenor.addEventListener("click", function() {
 
 function verificarFinal() {
     if (vidas === 0) {
+
+        const historialCartas = JSON.parse(localStorage.getItem("historialCartas")) || [];
+        historialCartas.push({puntos: puntos });
+        localStorage.setItem("historialCartas", JSON.stringify(historialCartas));
+        guardarRecord("recordCartas", puntos);
+
         areaDeJuego.hidden = true;
         perderJuego.hidden = false;
         btnEmpezar.hidden = true;
