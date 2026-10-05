@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TP Informatica General - Menu</title>
+  <title>TP Informatica General - Desarrollo</title>
   <link rel="stylesheet" href="css/archivo.css">
 </head>
 <body id="paginaInicio">
@@ -15,6 +15,7 @@
       <a href="dados.html" class="enlaceJuego" data-juego="dados">Juego de dados</a>
       <a href="preguntas.html" class="enlaceJuego" data-juego="preguntas">Juego de preguntas</a>
       <a href="resultados.html" class="enlaceJuego" data-juego="resultados">Resultados</a>
+      <a href="desarrollo.html" class="enlaceJuego" data-juego="desarrollo">Desarrollo Proyectual</a>
     </nav>
   </header>
 
@@ -25,57 +26,85 @@
         <h1>Trabajo Práctico 1</h1>
         <p class="datosMateria">Informática General &mdash; Cátedra Drelichman</p>
         <p>
-          Este sitio reúne tres juegos desarrollados en HTML, CSS y JavaScript
-          como parte del Trabajo Práctico 1 de la materia. Cada juego pone en
-          práctica distintos contenidos vistos durante la cursada: manejo del
-          DOM, eventos, estructuras de control, temporizadores, almacenamiento
-          local y consumo de una API pública. Desde el menú de navegación
-          podés acceder a cada juego y también a la tabla de resultados
-          generales del sitio.
+          Este sitio web consiste en una agrupación de 3 distintos juegos en un mismo sitio, 
+          uno en relación a las cartas, a los dados y un cuestionario de preguntas . 
+          En el menú de navegación se permite ingresar a las 6 páginas desarrolladas. 
         </p>
-      </section>
-
-      <section class="listaJuegos">
-        <h2>Los juegos</h2>
-
-        <article class="tarjetaJuego tarjetaCartas">
-          <h3>Juego de cartas: ¿Mayor o menor?</h3>
-          <p>
-            Se muestra una carta boca arriba y tenés que adivinar si la
-            siguiente será mayor o menor. Cada acierto te acerca a tu máximo
-            puntaje.
-          </p>
-          <a href="cartas.html" class="botonPrincipal">Jugar</a>
-        </article>
-
-        <article class="tarjetaJuego tarjetaDados">
-          <h3>Juego de dados: El primero a 100</h3>
-          <p>
-            Tirá los dados para acumular puntos o plantate para guardarlos.
-            Si sale un 1 perdés lo acumulado en el turno. Gana quien llegue
-            primero a 100 puntos.
-          </p>
-          <a href="dados.html" class="botonPrincipal">Jugar</a>
-        </article>
-
-        <article class="tarjetaJuego tarjetaPreguntas">
-          <h3>Juego de preguntas</h3>
-          <p>
-            Tres jugadores compiten por turnos respondiendo 10 preguntas de
-            opción múltiple cada uno, con tiempo límite. Al finalizar los tres
-            turnos se muestra el podio de la partida.
-          </p>
-          <a href="preguntas.html" class="botonPrincipal">Jugar</a>
-        </article>
-      </section>
-
-      <section class="integrantes">
-        <h2>Integrantes del grupo</h2>
-        <ul class="listaIntegrantes">
-          <li>Brisa Albornoz</li>
-          <li>Kiara Furci</li>
-          <li>Violeta Vallarino</li>
-        </ul>
+        <br>
+        <p>
+          Se trabajó en su desarrollo durante Septiembre-Octubre 2026, 
+          dentro de la carrera de Artes Multimediales en la materia de Informática General I - Cátedra Drelichman (TM).
+        </p>
+        <br>
+        <p>
+          Este sitio web consiste en una agrupación de 3 distintos juegos en un mismo sitio, 
+          uno en relación a las cartas, a los dados y un cuestionario de preguntas . 
+          En el menú de navegación se permite ingresar a las 6 páginas desarrolladas. 
+        </p>
+        <br>
+        <p>
+          En primer lugar, se encuentra el Inicio. 
+          En está página podrás encontrar una pequeña introducción sobre qué trata este sitio y su composición, 
+          tres tableros con un resumen de cada juego y sus respectivos botones para acceder a ellos directamente, 
+          y debajo una lista nombrando a las desarrolladoras del sitio.
+        </p>
+        <br>
+        <p>
+          Para la creación de cada juego, fuimos anotando ideas en común que teníamos y combinandolas con el uso de la IA (Claude, Gemini y ChatGPT). 
+          Igualmente, mientras íbamos trabajando en el desarrollo de cada uno, hubieron cambios de las ideas que teníamos planteadas en un principio, 
+          que permitieron mejorar la ejecución total de estos.
+        </p>
+        <br>
+        <p>
+          Según el orden del menú de navegación, el segundo sitio es el juego de cartas: “¿Mayor o Menor?”. 
+          Este juego es bastante simple. Consiste en que al empezar aparecerán dos cartas, la de la izquierda boca arriba 
+          y la de la derecha boca abajo. El objetivo del jugador, es adivinar si la próxima carta, 
+          que es la que está boca abajo, es mayor o menor que el valor de la carta actual. 
+          Para esto, están los botones de menor y mayor. Si aciertas, sumás un punto. 
+          Si perdés, restas una vida. Y el empate no suma, ni perjudica.  En total son tres vidas. 
+          Al llegar a cero, aparecerá una pantalla de “Game Over”, y en 5 segundos se reiniciará la página para poder jugar de vuelta. 
+          Los datos de cada partida jugada junto con los puntos ganados, aparecerán en el sitio de resultados.
+        </p>
+        <br>
+        <p>
+          El tercer sitio del navegador es el juego de los dados: “El primero a 100”. 
+          A diferencia del primer juego, este funciona con dos jugadores desde un mismo dispositivo. 
+          El objetivo es que mediante los valores aleatorios de los dos dados (del 1 al 6), uno consiga llegar a 100 puntos o más antes que el otro. 
+          La manera de conseguir puntos funciona mediante los dos botones de debajo de los dados “Lanzar dados” y “Plantarse”, 
+          aparte de otro botón que te permite comenzar una nueva partida. 
+          Cada vez que un jugador toca el botón para lanzar dados, acumula la suma de aquellos dados, mientras más presione, 
+          más puntos irá acumulando. Por otro lado, está el botón de plantarse, que permite guardar los puntos acumulados. 
+          La dificultad de este juego, es qué si sale un dado con el valor de “1”, los puntos que no se guardaron al plantarse se pierden 
+          y pasa el turno al otro jugador. 
+          Por esto, se deben de ir acumulando puntos guardados al plantarse e ir avanzando hasta llegar a 100. 
+          Este juego está pensado para que se jueguen 5 rondas, por lo que al ir ganando aparecerá un mensaje con las partidas ganadas de cada uno, 
+          dentro de esas 5 rondas.
+        </p>
+        <br>
+        <p>
+          La cuarta página del sitio es el juego de preguntas: “Pensá Rápido”. 
+          Este juego consiste de tres participantes, que por turnos deben de resolver 10 preguntas multiple choice con un contador de 120 segundos. 
+          Al terminar las 3 rondas, aparecerá una pantalla que marca las respuestas contestadas por cada jugador y las correctas. 
+          Y debajo de estos resultados, se muestra quien de los tres es el ganador, y se le asigna su premio (Fotos de perritos generados con la API). 
+          Al igual que en el segundo juego, funciona desde un mismo dispositivo, 
+          pero cada jugador deberá esperar a que el de delante termine de contestar las preguntas o se acabe su tiempo.
+        </p>
+        <br>
+        <p>
+          La quinta página va a mostrar todo su contenido una vez que esté jugado cada juego, ya que es la página de resultados. 
+          Si todavía no se jugó alguno de los tres juegos, aparece un mensaje que indica que todavía no se ha jugado nada. 
+          Al jugarlos, en cada una de las secciones se mostrarán 3 distintos tableros en relación a cada juego. 
+          En el juego de las cartas muestra cada partida jugada y los puntos acumulados de cada una. 
+          En el juego de los dados se muestra el número de la partida, cada jugador con sus puntos y el jugador ganador de la partida, 
+          pero esto cambia cada vez que se actualizan las 5 rondas de todo el juego. 
+          Y el tercer juego, el de las preguntas, muestra a cada jugador, sus preguntas respondidas y cuántas de ellas fueron correctas.
+        </p>
+        <br>
+        <p>
+          Por último, está la página del desarrollo proyectual (Esta misma página). 
+          Esta página va a contar un poco como fue todo este proceso de creación, diseño y más. 
+          Explica cómo se pensaron los juegos, la división de estos, la parte creativa y técnica y los distintos cambios durante todo el desarrollo.
+        </p>
       </section>
 
     </div>
