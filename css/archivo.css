@@ -191,6 +191,27 @@ footer{ padding: 24px clamp(24px, 5vw, 80px) 48px; font-size: 14px; opacity: .85
   margin-top: 20px;
 }
 
+#cartas {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Para el celular */
+
+@media (max-width: 780px){
+  .contenedorCartas{ padding: 20px 12px; }
+  .contenedorCartas section{ width: 100%; }
+  #cartas{ gap: 10px; }
+  #cartas img{
+    width: 100%;
+    max-width: 160px;
+    min-width: 0;
+    height: auto;
+  }
+}
+
+
 /* =======================================================
    dados.html
    ======================================================= */
