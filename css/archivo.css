@@ -356,7 +356,8 @@ nav.menuPrincipal{
 #paginaCartas     .enlaceJuego[data-juego="cartas"],
 #paginaDados      .enlaceJuego[data-juego="dados"],
 #paginaPreguntas  .enlaceJuego[data-juego="preguntas"],
-#paginaResultados .enlaceJuego[data-juego="resultados"]{
+#paginaResultados .enlaceJuego[data-juego="resultados"]
+#paginaDesarrollo .enlaceJuego[data-juego="desarrollo"] {
   opacity: 1;
   color: var(--plum);
   background: var(--gold);
