@@ -1,5 +1,5 @@
-let areaDeJuego = document.querySelector("#juego");
-let perderJuego = document.querySelector("#gameOver");
+const areaDeJuego = document.querySelector("#juego");
+const perderJuego = document.querySelector("#gameOver");
 
 areaDeJuego.hidden = true; // Para que el juego este oculto ante de empezar
 perderJuego.hidden = true; // Para que el game over este oculto antes de empezar
