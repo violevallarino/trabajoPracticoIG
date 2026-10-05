@@ -34,7 +34,7 @@ La cuarta página del sitio es el juego de preguntas: “Pensá Rápido”. Este
 
 El sistema de este juego funciona con cuatro pantallas (las instrucciones, el juego, el cambio entre los jugadores y los resultados), que se van alternando con el js. Las preguntas están guardadas en un array de objetos de un archivo aparte. Cada objeto tiene su pregunta, un array dentro con 3 opciones y la posición donde se encuentra la respuesta correcta. Al empezar el juego, esas preguntas se mezclan con una función que recorre el array e intercambia los elementos para que sean al azar. Luego, se dividen en 10 para cada jugador de adelante para atrás (empieza con el 1ro y termina en el 3ro).
 En cada turno, se reinicia el contador y con setInterval se van restando los segundos y actualizando el texto para que el jugador pueda ver cuanto tiempo le queda. Las opciones son creadas en el JavaScript, para que luego se peguen en el HTML, para poder interactuar con ellas y que se limpien al cargar la próxima pregunta. Cuando un jugador toca una opción, hay una función encargada de comparar el número de esa opción con el de la respuesta correcta, si coinciden suma una respuesta correcta y se va a sumar siempre una respondida, y así hasta responder las 10 (o que se termine el tiempo). Al terminar, una función frena el temporizador (con clearInterval), y si continúa otro jugador, aparece una pantalla que resume su turno. Si ya terminaron los tres, se muestran los resultados totales.
-Para esta pantalla final, hay un podio que ordena las preguntas más contestadas, y se asigna que jugador tiene el premio, calculandolo con Math.max. Para el premio utilizamos la API pública de Dog CEO, a la cual se le piden los datos con fetch, en un async que va a esperar la respuesta con await, que verifica que no haya un error y convierte el JSON para quedarse con la URL de la imagen y ser colocada en el src desde JS. Esto sucede dentro de un try/catch, ya que si la API no responde se muestra una imagen local que avisa sobre el problema.
+Para esta pantalla final, hay un podio que ordena a los jugadores por cantidad de respuestas correctas, y se asigna que jugador tiene el premio, calculandolo con Math.max. Para el premio utilizamos la API pública de Dog CEO, a la cual se le piden los datos con fetch, en un async que va a esperar la respuesta con await, que verifica que no haya un error y convierte el JSON para quedarse con la URL de la imagen y ser colocada en el src desde JS. Esto sucede dentro de un try/catch, ya que si la API no responde se muestra una imagen local que avisa sobre el problema.
 
 Las partidas de los juegos se guardan en el localStorage y se convierten a texto con JSON.stringify para poder mostrar los datos en la página de resultados.
 
@@ -54,6 +54,7 @@ trabajoPracticoIG/
 ├── dados.html
 ├── preguntas.html
 ├── resultados.html
+├── desarrollo.html
 │
 ├── css/
 │   └── archivo.css
@@ -64,7 +65,7 @@ trabajoPracticoIG/
 │   ├── preguntas.js
 │   ├── datosPreguntas.js
 │   ├── resultados.js
-│   └── estado.js
+│   └── estados.js
 │
 └── img/
     └── imágenes utilizadas por los juegos
@@ -110,7 +111,7 @@ Finalmente, durante el desarrollo se fueron modificando algunas decisiones inici
 
 DECLARACIÓN DE USO DE IA
 
-Para este trabajo utilizamos ChatGPT y Claude, ambos en sus versiones gratuitas. Las
+Para este trabajo utilizamos ChatGPT, Claude y Gemini, todos en sus versiones gratuitas. Las
 usamos las tres integrantes del grupo y en todas las etapas del desarrollo, sin asignar una
 herramienta a cada tarea. Las consultas abarcaron la idea y las reglas de los juegos, la
 escritura de código HTML, CSS y JavaScript, la búsqueda de errores, la construcción de
