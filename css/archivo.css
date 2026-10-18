@@ -10,7 +10,7 @@ a { color: inherit; }
   --wine:    #910C3F;
   --crimson: #C60039;
   --gold:    #FFC200;
-  --coral:   #E3611D; /* mezcla de crimson + gold, para texto de cuerpo */
+  --coral:   #a8d3df; /* mezcla de crimson + gold, para texto de cuerpo */
  
   --radius-lg: 32px;
   --radius-md: 20px;
@@ -334,179 +334,252 @@ footer{ padding: 24px clamp(24px, 5vw, 80px) 48px; font-size: 14px; opacity: .85
    .tarjetaJuego, .integrantes, .navegador, .piePagina.
    ======================================================= */
  
-/* El wrapper .contenedorGeneral del index ocupa todo el ancho */
-body:has(.presentacion) .contenedorGeneral{
-  max-width: none;
-  margin: 0;
-}
- 
-body:has(.presentacion) main{ padding: 0; }
-body:has(.presentacion) main > div{ display: contents; }
- 
-/* ---- Nav superior (no es la barra lateral: esa es solo para
-   cartas.html / dados.html) ---- */
-header.navegador{
-  padding: 22px clamp(24px, 5vw, 60px);
-}
-nav.menuPrincipal{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.enlaceJuego{
-  text-decoration: none;
-  color: var(--gold);
-  font-weight: 600;
-  font-size: 14px;
-  padding: 9px 16px;
-  border-radius: 999px;
-  opacity: .7;
-  transition: opacity .2s ease, background-color .2s ease;
-}
-.enlaceJuego:hover{ opacity: 1; background: rgba(255, 194, 0, .1); }
-.enlaceJuego[aria-current="page"]{
-  opacity: 1;
-  color: var(--plum);
-  background: var(--gold);
+
+/* =======================================================
+   INICIO — index.html
+   ======================================================= */
+
+body:has(.presentacion) .contenedorGeneral {
+    max-width: none;
+    margin: 0;
 }
 
-/* Página activa en amarillo, sin necesitar JS: cada <body> lleva
-   un id (ver abajo dónde ponerlo) que matchea el data-juego del
-   link correspondiente */
-#paginaInicio     .enlaceJuego[data-juego="inicio"],
-#paginaCartas     .enlaceJuego[data-juego="cartas"],
-#paginaDados      .enlaceJuego[data-juego="dados"],
-#paginaPreguntas  .enlaceJuego[data-juego="preguntas"],
-#paginaResultados .enlaceJuego[data-juego="resultados"]
-#paginaDesarrollo .enlaceJuego[data-juego="desarrollo"] {
-  opacity: 1;
-  color: var(--plum);
-  background: var(--gold);
-  font-weight: 700;
+body:has(.presentacion) main {
+    padding: 20px clamp(24px, 5vw, 80px) 40px;
 }
- 
-/* ---- Los 3 bloques que se van apilando ---- */
-.presentacion,
-.listaJuegos,
-.integrantes{
-  position: sticky;
-  top: 0;
-  min-height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-  padding: 48px clamp(28px, 6vw, 100px) 64px;
+
+body:has(.presentacion) main > div {
+    display: block;
 }
- 
-.presentacion{
-  background: var(--plum);
-  justify-content: flex-end;
-  z-index: 1;
-  border-radius: 0;
-  padding-top: 0;
+
+/* Menú superior */
+
+header.navegador {
+    padding: 18px clamp(24px, 5vw, 60px);
 }
- 
-.listaJuegos{ background: var(--wine); justify-content: center; z-index: 2; }
-.integrantes{ background: var(--crimson); justify-content: flex-start; z-index: 3; padding-bottom: 90px; }
- 
-/* Título: gigante, jugando con el espacio vacío arriba */
-.presentacion h1{
-  font-size: clamp(48px, 12vw, 170px);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  -webkit-text-stroke: 3px var(--gold);
-  paint-order: stroke fill;
-  margin-bottom: 18px;
+
+nav.menuPrincipal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
 }
- 
-.datosMateria{
-  font-size: clamp(16px, 2vw, 20px);
-  color: var(--coral);
-  margin-bottom: 28px;
+
+.enlaceJuego {
+    text-decoration: none;
+    color: var(--gold);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 9px 16px;
+    border-radius: 999px;
+    opacity: .7;
+    transition: opacity .2s ease, background-color .2s ease;
 }
- 
-.presentacion > p:not(.datosMateria){
-  max-width: 620px;
-  font-size: clamp(16px, 1.6vw, 19px);
-  color: var(--gold);
-  text-align: justify;
-  text-justify: inter-word;
-  hyphens: auto;
+
+.enlaceJuego:hover {
+    opacity: 1;
+    background: rgba(255, 194, 0, .1);
 }
- 
-/* Los juegos */
-.listaJuegos h2{ margin-bottom: 64px; }
-.listaJuegos{ display: flex; flex-direction: column; }
-.tarjetaJuego{
-  background: var(--gold);
-  color: var(--plum);
-  border-radius: var(--radius-md);
-  padding: 30px 28px;
-  box-shadow: 0 22px 44px rgba(0,0,0,.28);
-  transition: transform .2s ease;
-  margin-bottom: 20px;
-  max-width: 640px;
+
+/* Presentación principal */
+
+.presentacion {
+    min-height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 24px 0 32px;
+    border-radius: 0;
+    position: static;
 }
-.tarjetaJuego:hover{ transform: translateY(-4px); }
-.tarjetaJuego h3{
-  font-family: var(--ff-body);
-  font-weight: 700;
-  font-size: 21px;
-  color: var(--plum);
-  margin-bottom: 10px;
+
+.presentacion h1 {
+    font-size: clamp(34px, 5vw, 68px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    white-space: nowrap;
+    margin-bottom: 12px;
+    -webkit-text-stroke: 1px var(--gold);
+    paint-order: stroke fill;
 }
-.tarjetaJuego p{
-  font-weight: 500;
-  font-size: 15px;
-  color: var(--wine);
-  max-width: none;
-  margin-bottom: 16px;
+
+.datosMateria {
+    font-size: 16px;
+    color: var(--coral);
+    margin-bottom: 12px;
 }
-.tarjetaJuego .botonPrincipal{
-  display: inline-block;
-  background: var(--plum);
-  color: var(--gold);
+
+.presentacion > p:not(.datosMateria) {
+    max-width: 800px;
+    font-size: 17px;
+    color: var(--gold);
+    text-align: left;
+    margin-bottom: 0;
 }
- 
-/* Botón compartido para <a class="botonPrincipal"> y otros lugares */
-.botonPrincipal{
-  font-family: var(--ff-body);
-  font-weight: 700;
-  font-size: 14px;
-  text-decoration: none;
-  background: var(--gold);
-  color: var(--plum);
-  border-radius: 999px;
-  padding: 12px 24px;
-  transition: transform .15s ease;
+
+/* Tarjetas de los tres juegos */
+
+.listaJuegos {
+    min-height: auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    padding: 24px 0 40px;
+    position: static;
+    background: transparent;
+    border-radius: 0;
 }
-.botonPrincipal:hover{ transform: translateY(-3px); }
- 
+
+.listaJuegos h2 {
+    grid-column: 1 / -1;
+    margin-bottom: 4px;
+}
+
+.tarjetaJuego {
+    background: var(--gold);
+    color: var(--plum);
+    border-radius: var(--radius-md);
+    padding: 26px 24px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, .2);
+    transition: transform .2s ease;
+    margin-bottom: 0;
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.tarjetaJuego:hover {
+    transform: translateY(-4px);
+}
+
+.tarjetaJuego h3 {
+    font-family: var(--ff-body);
+    font-weight: 700;
+    font-size: 21px;
+    color: var(--plum);
+    margin-bottom: 14px;
+}
+
+.tarjetaJuego p {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--wine);
+    max-width: none;
+    margin-bottom: 24px;
+}
+
+/* Enlace para entrar a cada juego */
+
+.tarjetaJuego .botonPrincipal {
+    display: inline-block;
+    margin-top: auto;
+    background: var(--plum);
+    color: var(--gold);
+    text-decoration: none;
+    border-radius: 999px;
+    padding: 12px 24px;
+    font-weight: 700;
+    font-size: 14px;
+    transition: transform .15s ease;
+}
+
+.tarjetaJuego .botonPrincipal:hover {
+    transform: translateY(-3px);
+}
+
 /* Integrantes */
-.integrantes h2{ margin-bottom: 32px; }
-.listaIntegrantes{
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  max-width: 420px;
+
+.integrantes {
+    min-height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 0 40px;
+    background: transparent;
+    position: static;
+    border-radius: 0;
 }
-.listaIntegrantes li{
-  font-size: 20px;
-  color: var(--gold);
-  padding-bottom: 14px;
-  border-bottom: 1px solid rgba(255, 194, 0, .25);
+
+.integrantes h2 {
+    margin-bottom: 20px;
 }
- 
-.piePagina{
-  background: var(--crimson);
-  text-align: center;
+
+.listaIntegrantes {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 14px 28px;
+    max-width: none;
 }
- 
-@media (max-width: 780px){
-  .presentacion, .listaJuegos, .integrantes{ padding: 40px 22px 56px; }
+
+.listaIntegrantes li {
+    font-size: 16px;
+    color: var(--gold);
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 194, 0, .25);
 }
+
+/* Pie de página */
+
+.piePagina {
+    background: transparent;
+    text-align: center;
+}
+
+/* Adaptación para pantallas pequeñas */
+
+@media (max-width: 780px) {
+    body:has(.presentacion) main {
+        padding: 16px 22px 32px;
+    }
+
+    .presentacion h1 {
+        font-size: clamp(27px, 7vw, 42px);
+        white-space: normal;
+    }
+
+    .listaJuegos {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .tarjetaJuego {
+        padding: 24px;
+    }
+
+    .integrantes {
+        padding-top: 20px;
+    }
+}
+/*titulo inicio*/
+
+/* Título dorado metálico con brillo */
+#paginaInicio .presentacion h1 {
+    background: linear-gradient(
+        180deg,
+        #fff7b0 0%,
+        #ffd700 25%,
+        #fff1a6 45%,
+        #d4a017 60%,
+        #ffdf50 75%,
+        #b8860b 100%
+    );
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+
+    filter: drop-shadow(0 0 4px rgba(255, 194, 0, 0.45))
+            drop-shadow(0 0 12px rgba(255, 194, 0, 0.2));
+
+    -webkit-text-stroke: 0;
+}
+
  
 /* =======================================================
    preguntas.html
