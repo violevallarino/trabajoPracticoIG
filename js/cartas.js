@@ -8,6 +8,18 @@ let vidas = 3;
 let puntos = 0;
 let cartaNumero = 0; // Carta en mesa (actual)
 
+// Temporizador de inactividad: si pasan 30 segundos sin tocar nada, avisa
+const TIEMPO_INACTIVIDAD = 30000; // 30 segundos en milisegundos
+let temporizadorInactividad = null;
+
+function reiniciarTemporizadorInactividad() {
+    clearTimeout(temporizadorInactividad);
+
+    temporizadorInactividad = setTimeout(function() {
+        alert("No se registró interacción. ¡Vuelve a intentarlo!");
+        location.reload(); // reinicia el juego
+    }, TIEMPO_INACTIVIDAD);
+}
 // Botones
 
 const btnEmpezar = document.querySelector("#botonEmpezar");
@@ -32,7 +44,6 @@ let actualCarta = document.querySelector("#cartaActual");
 
 
 // Cuando el boton se presione, aparecerá el juego y una carta
-
 btnEmpezar.addEventListener("click", function() {
     areaDeJuego.hidden = false;
     btnEmpezar.hidden = true;
@@ -45,11 +56,14 @@ btnEmpezar.addEventListener("click", function() {
 
     cartaDorso.src = "img/dorso.png";
 
+    reiniciarTemporizadorInactividad(); 
+
 });
 
 // Boton Mayor
 
 btnMayor.addEventListener("click", function() {
+      reiniciarTemporizadorInactividad();
     btnMayor.disabled = true;
     btnMenor.disabled = true;
 
@@ -101,6 +115,7 @@ btnMayor.addEventListener("click", function() {
 // Ahora sucede lo mismo pero con el boton Menor
 
 btnMenor.addEventListener("click", function() {
+      reiniciarTemporizadorInactividad();
     btnMayor.disabled = true;
     btnMenor.disabled = true;
 
@@ -148,6 +163,7 @@ btnMenor.addEventListener("click", function() {
 
 function verificarFinal() {
     if (vidas === 0) {
+        clearTimeout(temporizadorInactividad);
 
         const historialCartas = JSON.parse(localStorage.getItem("historialCartas")) || [];
         historialCartas.push({puntos: puntos });
