@@ -820,3 +820,7 @@ nav.menuPrincipal {
 #resultado-dados tbody tr:nth-child(even) {
     background-color: #b51c40;
 }
+
+#reentrega {
+  margin-top: 20px;
+}
