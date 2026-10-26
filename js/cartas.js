@@ -9,17 +9,37 @@ let puntos = 0;
 let cartaNumero = 0; // Carta en mesa (actual)
 
 // Temporizador de inactividad: si pasan 30 segundos sin tocar nada, avisa
-const TIEMPO_INACTIVIDAD = 30000; // 30 segundos en milisegundos
+
+const inactividadTiempo = 30; // en segundos
+let tiempoRestante = inactividadTiempo;
 let temporizadorInactividad = null;
 
-function reiniciarTemporizadorInactividad() {
-    clearTimeout(temporizadorInactividad);
+const tiempoActual = document.querySelector("#tiempo");
 
-    temporizadorInactividad = setTimeout(function() {
-        alert("No se registró interacción. ¡Vuelve a intentarlo!");
-        location.reload(); // reinicia el juego
-    }, TIEMPO_INACTIVIDAD);
+function reiniciarTemporizadorInactividad() {
+    clearInterval(temporizadorInactividad);
+
+    tiempoRestante = inactividadTiempo;
+    tiempoActual.innerText = tiempoRestante;
+    tiempoActual.style.color = "";
+
+    temporizadorInactividad = setInterval(function() {
+        tiempoRestante--;
+        tiempoActual.innerText = tiempoRestante;
+
+        // En los últimos 10 segundos el número se pone en oscuro
+        if (tiempoRestante <= 10) {
+            tiempoActual.style.color = "var(--oscuro)";
+        }
+
+        if (tiempoRestante <= 0) {
+            clearInterval(temporizadorInactividad);
+            alert("No se registró interacción. ¡Vuelve a intentarlo!");
+            location.reload(); // reinicia el juego
+        }
+    }, 1000);
 }
+
 // Botones
 
 const btnEmpezar = document.querySelector("#botonEmpezar");
@@ -163,7 +183,7 @@ btnMenor.addEventListener("click", function() {
 
 function verificarFinal() {
     if (vidas === 0) {
-        clearTimeout(temporizadorInactividad);
+        clearInterval(temporizadorInactividad);
 
         const historialCartas = JSON.parse(localStorage.getItem("historialCartas")) || [];
         historialCartas.push({puntos: puntos });
